@@ -73,3 +73,29 @@ There is an issue with the `action objects`(Raw action object being passed insid
 The method takes an object that consists of all the `action methods`(or action creators) and the dispatch the method as arguments. This method binds the `action methods` with the dispatch method thereby removing the necessity of passing the `action methods` inside the dispatch method. Now we can directly call the methods without the dispatch method.
 
 - combineReducers: If you have more than one reducer functions and want to use it then you cannot do so since the `createStore` function takes only one single reducer function. So `combineReducer` as the name suggests takes multiple reducers and combines them into one single reducer so that we can pass it in the `createStore` function and use multiple reducers as the need arises in the application.
+
+# Redux Toolkit
+
+The Redux Toolkit package is intended to be the standard way to write Redux logic. It was originally created to help address three common concerns about Redux:
+
+- "Configuring a Redux store is too complicated"
+- "I have to add a lot of packages to get Redux to do anything useful"
+- "Redux requires too much boilerplate code"
+
+Redux Toolkit also includes a powerful data fetching and caching capability that we've dubbed "RTK Query". It's included in the package as a separate set of entry points. It's optional, but can eliminate the need to hand-write data fetching logic yourself.
+
+Redux Toolkit includes these APIs:
+
+- configureStore(): wraps createStore to provide simplified configuration options and good defaults. It can automatically combine your slice reducers, adds whatever Redux middleware you supply, includes redux-thunk by default, and enables use of the Redux DevTools Extension.
+
+- createReducer(): that lets you supply a lookup table of action types to case reducer functions, rather than writing switch statements. In addition, it automatically uses the immer library to let you write simpler immutable updates with normal mutative code, like state.todos[3].completed = true.
+
+- createAction(): generates an action creator function for the given action type string.
+
+- createSlice(): accepts an object of reducer functions, a slice name, and an initial state value, and automatically generates a slice reducer with corresponding action creators and action types.
+
+- combineSlices(): combines multiple slices into a single reducer, and allows "lazy loading" of slices after initialisation.
+createAsyncThunk: accepts an action type string and a function that returns a promise, and generates a thunk that dispatches pending/fulfilled/rejected action types based on that promise
+
+- createEntityAdapter: generates a set of reusable reducers and selectors to manage normalized data in the store
+The createSelector utility from the Reselect library, re-exported for ease of use.
